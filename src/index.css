@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 200 24% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 24% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 24% 12%;
+
+    --primary: 168 76% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 200 24% 12%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 200 15% 45%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 168 76% 32%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 200 24% 12%;
+    --sidebar-foreground: 210 20% 94%;
+    --sidebar-primary: 168 76% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 20% 18%;
+    --sidebar-accent-foreground: 210 20% 94%;
+    --sidebar-border: 200 20% 20%;
+    --sidebar-ring: 168 76% 42%;
+
+    --chart-1: 168 76% 32%;
+    --chart-2: 38 92% 50%;
+    --chart-3: 200 24% 12%;
+    --chart-4: 142 71% 45%;
+    --chart-5: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 200 24% 8%;
+    --foreground: 210 20% 94%;
+
+    --card: 200 24% 12%;
+    --card-foreground: 210 20% 94%;
+
+    --popover: 200 24% 12%;
+    --popover-foreground: 210 20% 94%;
+
+    --primary: 168 76% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 20% 18%;
+    --secondary-foreground: 210 20% 94%;
+
+    --muted: 200 20% 18%;
+    --muted-foreground: 210 15% 55%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 168 76% 42%;
+
+    --sidebar-background: 200 24% 6%;
+    --sidebar-foreground: 210 20% 94%;
+    --sidebar-primary: 168 76% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 20% 12%;
+    --sidebar-accent-foreground: 210 20% 94%;
+    --sidebar-border: 200 20% 15%;
+    --sidebar-ring: 168 76% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg;
+  }
+
+  .metric-card {
+    @apply bg-card rounded-xl p-4 shadow-sm border border-border/50 transition-all duration-200 hover:shadow-md hover:border-primary/20;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .stat-label {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground;
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-1 py-2 px-3 text-muted-foreground transition-colors;
+  }
+
+  .bottom-nav-item-active {
+    @apply text-primary;
+  }
+
+  .form-section {
+    @apply bg-card rounded-xl p-6 border border-border/50 shadow-sm;
+  }
+
+  .page-header {
+    @apply flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .table-header {
+    @apply bg-muted/50 text-muted-foreground text-sm font-medium;
+  }
+
+  .table-row {
+    @apply border-b border-border/50 hover:bg-muted/30 transition-colors;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-invoice, .print-invoice * {
+    visibility: visible;
+  }
+  .print-invoice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  .print-invoice * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+    border-color: black !important;
+  }
+  .print-invoice .badge {
+    border: 1px solid black;
+  }
+}
